@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>Nexus</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+			#top
+			{
+				width: 400px;
+				height: 300px;
+				background-color: white;
+				margin: auto;
+				margin-top: 150px;
+			}
+			input[type=checkbox]
+			{
+			    border: 1px solid #ccc;/*grey color*/
+			    border-radius: 4px;
+			    outline: none;
+			    width: 25px;
+			    height: 25px;
+			    background-color: blue;
+			}
+			input[type=submit] 
+			{
+				border: 1px solid #ccc;/*grey color*/
+			    border-radius: 4px;
+			    outline: none;
+			    width: 75px;
+			    height: 50px;
+			    background-color: blue;
+			    margin-left: 50px;
+			}
+			#head
+			{
+				margin-left: 50px;
+				margin-top: -32px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id='top'>
+				    			
+	    		<form action = "verify/" method ="post">
+	    			{% csrf_token %}
+
+	    			<input type="checkbox" value='verify' id="verify_id" name='checks'>
+	    			<h1 id='head'>Click me to verify.</h1>
+	    			<br><br>
+	      			<input type="submit" value="verify" id="verify_btn" >
+	      		</form>
+			</div>	
+			
+	</body>
+</html>

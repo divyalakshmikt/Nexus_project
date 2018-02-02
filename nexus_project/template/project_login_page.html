@@ -1,0 +1,228 @@
+<html>
+	<head>
+		<title>Nexus</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+			#top
+			{
+				width: 100%;
+				height: 15%;
+				color: white;
+				background-color:rgb(30,75,102);
+
+			}
+			#head
+			{
+				padding-left: 50px;
+				padding-top: 25px;
+				font-family: Arial;
+			}
+			
+			.dropdown 
+			{
+		    	float: left;
+		      margin-top: -55px;
+			}
+
+			.dropdown .dropbtn 
+			{
+			    margin-left:1100px;
+			    
+			    font-size: 16px;    
+			    border: none;
+			    outline: none;
+			    color: white;
+			    padding: 10px 12px;
+			    background-color: inherit;
+			    font: inherit;
+			   
+			}
+
+			.dropdown:hover .dropbtn
+			 {
+			    background-color: rgb(30,75,102)
+			}
+
+			.dropdown-content 
+			{
+			    display: none;
+			    position: absolute;
+			    min-width: 120px;
+			    margin-left:1100px;
+			    background-color: white;
+			}
+
+			.dropdown-content a
+			 {
+			    float: none;
+			    color: black;
+			    padding: 12px 16px;
+			    text-decoration: none;
+			    display: block;
+			    text-align: left;
+			}
+
+			.dropdown-content a:hover
+			 {
+			    background-color: #ddd;
+			}
+
+			.dropdown:hover .dropdown-content 
+			{
+			    display: block;
+			}
+			.welcome
+			{
+				width: 700px;
+				height: 450px;
+				background-color: white;
+				margin: auto;
+				margin-left: 450px;
+			}
+			.button
+			{
+			   background-color: #008CBA; /* blue */
+			    border: 1px solid #008CBA;
+			    color: white;
+			    text-align: center;
+			    font-size: 16px;
+			    margin: 6px 3px;
+			    cursor: pointer;
+			    height: 55px;
+			    width: 355px;
+			}
+			.button2 
+			{
+				border-radius: 4px;
+			}
+			input[type=text] 
+			{
+			    
+			    padding: 12px 20px;
+			    margin: 8px 0; 
+			    border: 1px solid #ccc;/*grey color*/
+			    border-radius: 4px;
+			    outline: none;
+			}
+				::placeholder
+		    {
+			    color: #ccc;
+			    opacity: 1; /* Firefox */
+			}
+			input[type=checkbox] 
+			{
+			  background-color: white;
+			  border: 1px;
+			}
+			#new_accnt_txt
+			{	
+				color:grey;
+				
+			}
+			#welcome_txt
+			{ 
+				color: rgb(30,75,102);
+				font-family: Arial;
+			}
+			#home_btn,#signup_btn
+			{
+				width: 120px;
+				height: 25px;
+				background-color: white;
+				border: 1px solid white;
+			}
+			#signup_btn
+			{
+				margin-top: -15px;
+			}
+			#lbl_error_id,#lbl_emailerror_id,#lbl_pswderror_id
+			{
+				color: red;
+			}
+		</style>
+		<script>
+			function validate_form()
+          {
+            var password=document.getElementById("txt_pswd_id").value;
+            var username=document.getElementById("txt_email_id").value;
+            if (username=="" && password=="")
+            {
+                document.getElementById("lbl_error_id").innerHTML="USERNAME AND PASSWORD CANOT BE NULL";
+                return false;
+            } 
+            else
+            {  
+            	document.getElementById("lbl_error_id").innerHTML=null;
+            	
+	            if (username =="") 
+	            {            
+	                document.getElementById("lbl_emailerror_id").innerHTML="ENTER UR EMAIL";
+	                document.getElementById("txt_email_id").style.borderColor="red";
+	                return false;
+	            }
+	                document.getElementById("lbl_emailerror_id").innerHTML=null;
+	                document.getElementById("txt_email_id").style.borderColor="";
+
+	            if (password =="") 
+	            {              
+	                document.getElementById("lbl_pswderror_id").innerHTML="ENTER UR PASSWORD";
+	                document.getElementById("txt_pswd_id").style.borderColor="red";
+	                return false;
+	            }    
+	                document.getElementById("lbl_pswderror_id").innerHTML=null;
+	                document.getElementById("txt_pswd_id").style.borderColor="";
+	        }     
+
+	    }  
+		</script>
+	</head>
+
+	<body>
+		<div id='top'>
+			<h1 id='head'> NEXUS </h1>
+			
+			 <div class="dropdown">
+   				<button class="dropbtn">
+   					<b>Acccount </b>
+      				<i class="fa fa-caret-down"></i>
+    			</button>
+    			<div class="dropdown-content">
+      				<form action = "index/" method ="post">
+	    				{% csrf_token %}
+      					<input type="submit" value="Home" id="home_btn" >
+      				</form>
+
+      				<form action = "signup_page/" method ="post">
+	    				{% csrf_token %}
+	      				<input type="submit" value="Sign Up" id="signup_btn" >
+	      			</form>
+    			</div>
+ 			 </div> 
+		</div>
+
+		<div class='welcome'>
+			<h1 id="welcome_txt">Welcome back !</h1>
+			<h4 id='new_accnt_txt'>Please Login</h4>
+			<form action = "login/" method ="post">
+	    	{% csrf_token %}
+				<input type="text" placeholder="Email Address"  name="txt_email" id="txt_email_id" style="height:40px"size="42">
+				<label id="lbl_emailerror_id"></label>
+				<br>
+						
+				<input type="text"placeholder="Password" name="txt_pswd" id="txt_pswd_id" style="height:40px"size="42">
+				<label id="lbl_pswderror_id"></label>
+				<br><br>					
+				<input type="checkbox" name="" value="" class="cb"> 
+				 <font color="grey"> Remember me</font>
+				<br>
+				<label id="lbl_error_id"></label>
+				<font color="red" id="Erroremail">{{confrm_email}}</font>
+				<font color="red" id="Erroremail">{{Erroremail}}</font>
+				<br><br>
+				
+				<button class="button button2" onClick="return validate_form()">Sent</button>
+			</form>
+		</div>
+	</body>
+</html>

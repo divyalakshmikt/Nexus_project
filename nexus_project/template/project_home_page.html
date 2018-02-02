@@ -1,0 +1,133 @@
+<html>
+	<head>
+		<title>Nexus</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+			#top
+			{
+				width: 100%;
+				height: 15%;
+				color: white;
+				background-color:rgb(30,75,102);
+
+			}
+			#head
+			{
+				padding-left: 50px;
+				padding-top: 25px;
+				font-family: Arial;
+			}
+			
+			.dropdown 
+			{
+		    	float: left;
+		      margin-top: -55px;
+			}
+
+			.dropdown .dropbtn 
+			{
+			    margin-left:1100px;
+			    
+			    font-size: 16px;    
+			    border: none;
+			    outline: none;
+			    color: white;
+			    padding: 10px 12px;
+			    background-color: inherit;
+			    font: inherit;
+			   
+			}
+
+			.dropdown:hover .dropbtn
+			 {
+			    background-color: rgb(30,75,102);
+			}
+
+			.dropdown-content 
+			{
+			    display: none;
+			    position: absolute;
+			    min-width: 120px;
+			    margin-left:1100px;
+			    background-color: white;
+			}
+
+			.dropdown-content a
+			 {
+			    float: none;
+			    color: black;
+			    padding: 12px 16px;
+			    text-decoration: none;
+			    display: block;
+			    text-align: left;
+			}
+
+			.dropdown-content a:hover
+			 {
+			    background-color: #ddd;
+			}
+
+			.dropdown:hover .dropdown-content 
+			{
+			    display: block;
+			}
+			#msg_1
+			{
+				color: rgb(30,75,102);
+			}
+			#msg_2
+			{
+				color:grey;
+			}
+			.bottom
+			{
+				padding-left: 75px;
+				padding-top: 25px;
+			}
+			#login_btn,#signup_btn
+			{
+				width: 120px;
+				height: 25px;
+				background-color: white;
+				border: 1px solid white;
+			}
+			#login_btn
+			{
+				margin-top: -15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id='top'>
+			
+	         	
+				<h1 id='head'> NEXUS </h1>
+				 <div class="dropdown">
+	   				<button class="dropbtn">
+	   					<b>Acccount </b>
+	      				<i class="fa fa-caret-down"></i>
+	    			</button>
+
+	    			<div class="dropdown-content">
+	    				<form action = "signup_page/" method ="post">
+	    					{% csrf_token %}
+	      					<input type="submit" value="Sign Up" id="signup_btn" >
+	      				</form>
+	      				<form action = "login_page/" method ="post">
+	    					{% csrf_token %}		
+	      					<input type="submit" value="Login" id="login_btn" >
+	      				</form>
+
+	    			</div>
+	 			 </div> 
+			</div>
+
+			<div class='bottom'>
+				<h1 id='msg_1'> Hello Landing Page</h1>
+				<h4 id='msg_2'>Welcome to the Landing page</h4>
+			</div>	
+			
+	</body>
+</html>
